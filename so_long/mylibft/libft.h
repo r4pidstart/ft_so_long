@@ -1,38 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_header.h                                        :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 22:05:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/30 04:51:24 by tjo              ###   ########.fr       */
+/*   Created: 2022/08/30 04:08:39 by tjo               #+#    #+#             */
+/*   Updated: 2022/08/30 04:17:56 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_HEADER_H
-# define FT_HEADER_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
-# include<stdlib.h>
-# include<unistd.h>
-# include<fcntl.h>
-# include<stdio.h>
-# include<errno.h>
-# include<string.h> 
-# include"mlx/mlx.h"
-# include"mylibft/libft.h"
-
-typedef struct s_point
-{
-	int	x;
-	int	y;
-}t_point;
-
-typedef struct s_map
-{
-	t_point	player;
-	t_list	*exit;
-	t_list	*collectible;
-}t_map;
+# include"gnl/get_next_line.h"
+# include"libft/ft_libft.h"
+# include"printf/ft_printf.h"
 
 #endif

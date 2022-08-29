@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_header.h                                        :+:      :+:    :+:   */
+/*   ft_memory2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/29 22:05:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/30 04:51:24 by tjo              ###   ########.fr       */
+/*   Created: 2022/08/30 03:48:46 by tjo               #+#    #+#             */
+/*   Updated: 2022/08/30 04:14:26 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_HEADER_H
-# define FT_HEADER_H
+#include"./ft_libft.h"
 
-# include<stdlib.h>
-# include<unistd.h>
-# include<fcntl.h>
-# include<stdio.h>
-# include<errno.h>
-# include<string.h> 
-# include"mlx/mlx.h"
-# include"mylibft/libft.h"
-
-typedef struct s_point
+void	ft_bzero(void *s, size_t n)
 {
-	int	x;
-	int	y;
-}t_point;
+	while (n--)
+		*(char *)(s++) = 0;
+}
 
-typedef struct s_map
+void	*ft_calloc(size_t count, size_t size)
 {
-	t_point	player;
-	t_list	*exit;
-	t_list	*collectible;
-}t_map;
+	void	*ret;
 
-#endif
+	ret = malloc(count * size);
+	if (!ret)
+		return (0);
+	ft_bzero(ret, count * size);
+	return (ret);
+}

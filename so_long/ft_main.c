@@ -6,21 +6,18 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 22:05:21 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/29 22:47:31 by tjo              ###   ########.fr       */
+/*   Updated: 2022/08/30 04:25:54 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_header.h"
 
-int	main(void)
+int	main(int argc, char *argv)
 {
-	void	*mlx;
-	void	*mlx_win;
+	t_map	map;
 
-	printf("test");
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "TEST");
-	mlx_loop(mlx);
-
-	(void)mlx_win;
+	if (argc != 2)
+		return (!printf("Wrong argument"));
+	else if (verify_map(argv[1]))
+		return (2);
 }
