@@ -6,13 +6,13 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 15:25:59 by tjo               #+#    #+#             */
-/*   Updated: 2022/06/01 02:48:12 by tjo              ###   ########.fr       */
+/*   Updated: 2022/08/31 04:50:18 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"get_next_line.h"
 
-void	*ft_memmove(void *dst, const void *src, size_t len)
+static void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	cur;
 
@@ -49,7 +49,7 @@ static size_t	ft_strlen(const char *s)
 	return (n);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_custom_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*ret;
 	size_t	substr_len;

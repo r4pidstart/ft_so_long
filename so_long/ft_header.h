@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 22:05:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/31 00:17:08 by tjo              ###   ########.fr       */
+/*   Updated: 2022/08/31 05:04:40 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,9 @@ typedef struct s_map
 {
 	int		row;
 	int		col;
+	int		empty_cnt;
 	t_point	player;
+	t_point	enemy;
 	t_list	*exit;
 	t_list	*collectible;
 	t_list	*wall;
@@ -40,5 +42,12 @@ typedef struct s_map
 
 /* ft_verify_map.c */
 int	verify_map(char *path, t_map *map);
+
+/* ft_header.c */
+char	**make_table(t_map map);
+
+/* ft_utils.c */
+size_t	__rand(void);
+
 
 #endif

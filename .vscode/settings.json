@@ -5,7 +5,8 @@
 		"get_next_line_bonus.h": "c",
 		"utils.h": "c",
 		"locale": "cpp",
-		"istream": "c"
+		"istream": "c",
+		"ft_printf.h": "c"
 	},
     "editor.insertSpaces": false,
 	"editor.detectIndentation": false,

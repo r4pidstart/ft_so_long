@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 15:26:03 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/30 04:10:07 by tjo              ###   ########.fr       */
+/*   Updated: 2022/08/31 04:49:54 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ typedef struct s_fd_list
 }t_fd_list;
 
 /* get_next_line_utils.c */
-void	*ft_memmove(void *dst, const void *src, size_t len);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
+char	*ft_custom_substr(char const *s, unsigned int start, size_t len);
 char	*ft_custom_strjoin(char *s1, char *s2, int rd_siz);
 
 /* get_next_line.c */

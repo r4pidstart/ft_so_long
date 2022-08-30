@@ -6,7 +6,16 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 03:19:00 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/30 03:19:56 by tjo              ###   ########.fr       */
+/*   Updated: 2022/08/31 05:07:03 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include"ft_header.h"
+
+size_t	__rand(void)
+{
+	static size_t	seed = 3847291;
+
+	seed = seed * 8237473 + 3828182;
+	return (seed);
+}

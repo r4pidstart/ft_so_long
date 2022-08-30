@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 15:25:55 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/30 04:09:59 by tjo              ###   ########.fr       */
+/*   Updated: 2022/08/31 04:50:08 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ static char	*make_next_string(t_fd_list *node, t_fd_list **lst)
 
 	if (node->string[node->idx] == '\n')
 	{
-		ret = ft_substr(node->string, 0, node->idx + 1);
+		ret = ft_custom_substr(node->string, 0, node->idx + 1);
 		if (!ret)
 			return (0);
-		tmp = ft_substr(node->string, node->idx + 1, (size_t)(-1));
+		tmp = ft_custom_substr(node->string, node->idx + 1, (size_t)(-1));
 		if (!tmp)
 			return (0);
 		free(node->string);
@@ -78,7 +78,7 @@ static char	*make_next_string(t_fd_list *node, t_fd_list **lst)
 	}
 	else
 	{
-		ret = ft_substr(node->string, 0, node->idx + 1);
+		ret = ft_custom_substr(node->string, 0, node->idx + 1);
 		if (!ret)
 			return (0);
 		delete_fd(node->fd, lst);
