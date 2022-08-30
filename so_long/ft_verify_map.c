@@ -6,13 +6,13 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 03:15:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/30 23:34:59 by tjo              ###   ########.fr       */
+/*   Updated: 2022/08/31 00:08:57 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_header.h"
 
-static int	lst_point_append(int x, int y, t_list *lst)
+static int	lst_point_append(int x, int y, t_list **lst)
 {
 	t_point	*new_point;
 	t_list	*new;
@@ -29,19 +29,22 @@ static int	lst_point_append(int x, int y, t_list *lst)
 	}
 	new_point->x = x;
 	new_point->y = y;
-	ft_lstadd_front(&lst, new);
+	new->content = new_point;
+	ft_lstadd_front(lst, new);
 	return (0);
 }
 
 static int	line_check(char *line, int len, int *wall_cnt, t_map *map)
 {
+	if (line[0] != '1' || line[len - 1] != '1')
+		return (1);
 	while (len--)
 	{
 		*wall_cnt += (line[len] == '1');
 		if (line[len] == 'C')
-			lst_point_append(map->row, len, map->collectible);
+			lst_point_append(map->row, len, &map->collectible);
 		else if (line[len] == 'E')
-			lst_point_append(map->row, len, map->exit);
+			lst_point_append(map->row, len, &map->exit);
 		else if (line[len] == 'P' && map->player.x == -1)
 			map->player = (t_point){.x = map->row, .y = len};
 		else if (line[len] != '0' && line[len] != '1')
@@ -58,9 +61,12 @@ static int	read_map(int fd, t_map *map)
 
 	tmp = get_next_line(fd);
 	map->col = ft_strlen(tmp);
+	map->col -= (tmp[map->col - 1] == '\n');
 	while (tmp)
 	{
+		wall_cnt = 0;
 		tmp_len = ft_strlen(tmp);
+		tmp_len -= (tmp[tmp_len - 1] == '\n');
 		if (tmp_len != map->col || line_check(tmp, tmp_len, &wall_cnt, map))
 			return (1);
 		map->row++;
@@ -80,13 +86,12 @@ int	verify_map(char *path, t_map *map)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
-		perror("Error\n");
-		perror(strerror(errno));
+		perror("Error\nCannot open the file");
 		return (1);
 	}
 	else if (read_map(fd, map))
 	{
-		perror("Error\nInvalid map file");
+		printf("Error\nInvalid map file\n");
 		ft_lstclear(&map->collectible, free);
 		ft_lstclear(&map->exit, free);
 		return (1);
