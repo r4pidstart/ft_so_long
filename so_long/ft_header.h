@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 22:05:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/30 04:51:24 by tjo              ###   ########.fr       */
+/*   Updated: 2022/08/30 23:15:05 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,14 @@ typedef struct s_point
 
 typedef struct s_map
 {
+	int		row;
+	int		col;
 	t_point	player;
 	t_list	*exit;
 	t_list	*collectible;
 }t_map;
+
+/* ft_verify_map.c */
+int	verify_map(char *path, t_map *map);
 
 #endif

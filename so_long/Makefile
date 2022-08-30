@@ -1,4 +1,10 @@
 all:
+	make -C mylibft all
 	clang -Wall -Wextra -Werror -g3 -ggdb \
-	ft_main.c -o ../test \
-	-Imlx -Lmlx -lmlx -framework Metal -framework Metalkit
+	-o ../test \
+	ft_*.c \
+	-Imlx -Lmlx -lmlx -framework Metal -framework Metalkit \
+	-Lmylibft -lft
+
+clean:
+	rm -r */*/*/*.o
