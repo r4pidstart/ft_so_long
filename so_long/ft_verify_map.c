@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 03:15:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/31 00:17:21 by tjo              ###   ########.fr       */
+/*   Updated: 2022/08/31 03:43:39 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ static int	read_map(int fd, t_map *map)
 		tmp_len = ft_strlen(tmp);
 		tmp_len -= (tmp[tmp_len - 1] == '\n');
 		if (tmp_len != map->col || line_check(tmp, tmp_len, &wall_cnt, map))
+			return (1);
+		else if (!map->row && wall_cnt != map->col)
 			return (1);
 		map->row++;
 		tmp = get_next_line(fd);
