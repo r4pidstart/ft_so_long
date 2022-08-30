@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 22:05:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/30 23:15:05 by tjo              ###   ########.fr       */
+/*   Updated: 2022/08/31 00:17:08 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_map
 	t_point	player;
 	t_list	*exit;
 	t_list	*collectible;
+	t_list	*wall;
 }t_map;
 
 /* ft_verify_map.c */

@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 03:15:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/31 00:08:57 by tjo              ###   ########.fr       */
+/*   Updated: 2022/08/31 00:17:21 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@ static int	line_check(char *line, int len, int *wall_cnt, t_map *map)
 			lst_point_append(map->row, len, &map->exit);
 		else if (line[len] == 'P' && map->player.x == -1)
 			map->player = (t_point){.x = map->row, .y = len};
-		else if (line[len] != '0' && line[len] != '1')
+		else if (line[len] == '1')
+			lst_point_append(map->row, len, &map->wall);
+		else if (line[len] != '0')
 			return (1);
 	}
 	return (0);
@@ -81,7 +83,7 @@ int	verify_map(char *path, t_map *map)
 {
 	int		fd;
 
-	*map = (t_map){.collectible = 0, .exit = 0};
+	*map = (t_map){.collectible = 0, .exit = 0, .wall = 0};
 	map->player = (t_point){.x = -1, .y = -1};
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
