@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 03:15:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/31 03:43:39 by tjo              ###   ########.fr       */
+/*   Updated: 2022/08/31 03:57:40 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,8 @@ static int	read_map(int fd, t_map *map)
 	int		wall_cnt;
 
 	tmp = get_next_line(fd);
+	if (tmp == 0)
+		return (1);
 	map->col = ft_strlen(tmp);
 	map->col -= (tmp[map->col - 1] == '\n');
 	while (tmp)
