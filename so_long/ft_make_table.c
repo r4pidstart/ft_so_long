@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 04:40:57 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/31 05:03:16 by tjo              ###   ########.fr       */
+/*   Updated: 2022/08/31 17:56:44 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,12 @@ char	**make_table(t_map map)
 	{
 		table[i] = (char *)malloc(sizeof(char *) * map.col);
 		if (!table[i])
+		{
+			while (i++ < map.row - 1)
+				free(table[i]);
+			free(table);
 			return (0);
+		}
 		ft_memset(table[i], 0, map.col);
 	}
 	fill_table(table, map);
