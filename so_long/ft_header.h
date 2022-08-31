@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 22:05:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/31 05:04:40 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 03:42:15 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@
 # include<string.h> 
 # include"mlx/mlx.h"
 # include"mylibft/libft.h"
+
+// gress #509B66
 
 typedef struct s_point
 {
@@ -40,14 +42,47 @@ typedef struct s_map
 	t_list	*wall;
 }t_map;
 
+typedef struct s_vars
+{
+	void	*mlx;
+	void	*win;
+	char	**table;
+	t_map	map;
+}t_vars;
+
+typedef struct s_assets
+{
+	void	*chest;
+	void	*door;
+	void	*ground;
+	void	*player[2];
+	void	*slime;
+	void	*wall;
+	void	*num[10];
+	void	*sharp;
+}t_assets;
+
+enum	e_keycode
+{
+	KEY_W = 13,
+	KEY_A = 0,
+	KEY_S = 1,
+	KEY_D = 2,
+	KEY_ESC = 53
+};
+
 /* ft_verify_map.c */
-int	verify_map(char *path, t_map *map);
+int		verify_map(char *path, t_map *map);
 
 /* ft_header.c */
 char	**make_table(t_map map);
 
 /* ft_utils.c */
 size_t	__rand(void);
+
+/* ft_draw.c */
+void	draw_image(t_vars *vars);
+
 
 
 #endif

@@ -6,7 +6,8 @@
 		"utils.h": "c",
 		"locale": "cpp",
 		"istream": "c",
-		"ft_printf.h": "c"
+		"ft_printf.h": "c",
+		"__config": "c"
 	},
     "editor.insertSpaces": false,
 	"editor.detectIndentation": false,
