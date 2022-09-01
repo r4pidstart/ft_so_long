@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 03:29:47 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 20:01:34 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 20:51:06 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,32 +61,43 @@ static void	draw_count(t_vars *v, t_assets *a, int moved)
 			a->sharp, offset - digits * 18 - 16, 16);
 }
 
+static void	draw_area(t_point p, t_vars *v, t_assets *a, int p_state)
+{
+	(void)p_state;
+	if (v->table[p.x][p.y] == 'W')
+		mlx_put_image_to_window(v->m, v->w, a->wall, p.y * 64, p.x * 64);
+	else
+	{
+		mlx_put_image_to_window(v->m, v->w, a->ground, p.y * 64, p.x * 64);
+		if (v->table[p.x][p.y] == 'C')
+			mlx_put_image_to_window(v->m, v->w, a->chest, p.y * 64, p.x * 64);
+		else if (v->table[p.x][p.y] == 'P')
+			mlx_put_image_to_window(v->m, v->w, \
+				a->player[p_state / 50 & 1], p.y * 64, p.x * 64);
+		else if (v->table[p.x][p.y] == 'Q')
+			mlx_put_image_to_window(v->m, v->w, a->door, p.y * 64, p.x * 64);
+		else if (v->table[p.x][p.y] == 'E')
+			mlx_put_image_to_window(v->m, v->w, a->slime, p.y * 64, p.x * 64);
+	}
+}
+
 void	draw_image(t_vars *v, t_assets a, int moved)
 {
+	static int	p_state = 0;
 	int			x;
 	int			y;
-	static int	p_state = 0;
 
+	p_state++;
+	if (p_state % 50 == 0 && !moved)
+		return ;
 	x = v->map.row;
 	while (x--)
 	{
 		y = v->map.col;
 		while (y--)
-		{
-			mlx_put_image_to_window(v->m, v->w, a.ground, y * 64, x * 64);
-			if (v->table[x][y] == 'C')
-				mlx_put_image_to_window(v->m, v->w, a.chest, y * 64, x * 64);
-			else if (v->table[x][y] == 'P')
-				mlx_put_image_to_window(v->m, v->w, \
-					a.player[p_state / 50 & 1], y * 64, x * 64);
-			else if (v->table[x][y] == 'W')
-				mlx_put_image_to_window(v->m, v->w, a.wall, y * 64, x * 64);
-			else if (v->table[x][y] == 'Q')
-				mlx_put_image_to_window(v->m, v->w, a.door, y * 64, x * 64);
-			else if (v->table[x][y] == 'E')
-				mlx_put_image_to_window(v->m, v->w, a.slime, y * 64, x * 64);
-		}
+			draw_area((t_point){x, y}, v, &a, p_state);
 	}
-	p_state++;
+	if (p_state >= 100)
+		p_state = 0;
 	draw_count(v, &a, moved);
 }
