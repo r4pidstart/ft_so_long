@@ -6,7 +6,7 @@ static char *result[] = {
 ". c #242A3D",
 "X c #414B66",
 "o c #677598",
-"O c None",
+"O c #947C5D",
 /* pixels */
 "OOOO                                                        OOOO",
 "OOOO                                                        OOOO",
