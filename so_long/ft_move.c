@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 19:06:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 22:56:08 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 23:38:37 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ void	move_player(int c, t_vars *v)
 	{
 		v->table[v->map.player.x][v->map.player.y] = '\0';
 		v->map.player.x = -1;
-		draw_image(v, get_assets(v), 0);
+		draw_image(v, 0);
 		return ;
 	}
 	else if (v->table[next.x][next.y] == 'Q')
-		exit(0);
+		close_game(v);
 	v->table[v->map.player.x][v->map.player.y] = 0;
 	v->map.player = next;
 	v->table[v->map.player.x][v->map.player.y] = 'P';
 	v->map.move_cnt++;
-	draw_image(v, get_assets(v), 1);
+	draw_image(v, 1);
 }
 
 void	move_enemy(t_vars *v)

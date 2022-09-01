@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 03:29:47 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 23:05:16 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 23:15:28 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static void	draw_area(t_point p, t_vars *v, t_assets *a, int p_state)
 	}
 }
 
-void	draw_image(t_vars *v, t_assets a, int moved)
+void	draw_image(t_vars *v, int moved)
 {
 	static int	p_state = 0;
 	int			x;
@@ -99,9 +99,9 @@ void	draw_image(t_vars *v, t_assets a, int moved)
 	{
 		y = v->map.col;
 		while (y--)
-			draw_area((t_point){x, y}, v, &a, p_state | (1 << 16));
+			draw_area((t_point){x, y}, v, &v->assets, p_state);
 	}
 	if (p_state >= 100)
 		p_state = 0;
-	draw_count(v, &a, moved);
+	draw_count(v, &v->assets, moved);
 }

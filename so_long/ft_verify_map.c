@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 03:15:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 20:10:32 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 23:35:13 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ static int	read_map(int fd, t_map *map)
 		else if (!map->row && wall_cnt != map->col)
 			return (1);
 		map->row++;
+		free(tmp);
 		tmp = get_next_line(fd);
 	}
 	return (wall_cnt != map->col || map->player.x == -1 \
