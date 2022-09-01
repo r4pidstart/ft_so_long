@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 22:05:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 19:36:08 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 19:59:37 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ typedef struct s_map
 
 typedef struct s_vars
 {
-	void	*mlx;
-	void	*win;
+	void	*m;
+	void	*w;
 	char	**table;
 	t_map	map;
 }t_vars;

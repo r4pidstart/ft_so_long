@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 03:15:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 19:00:48 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 20:10:32 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ static int	line_check(char *line, int len, int *wall_cnt, t_map *map)
 	{
 		*wall_cnt += (line[len] == '1');
 		if (line[len] == 'C')
+		{
 			lst_point_append(map->row, len, &map->collectible);
+			map->collectible_cnt++;
+		}
 		else if (line[len] == 'E')
 			lst_point_append(map->row, len, &map->exit);
 		else if (line[len] == 'P' && map->player.x == -1)
