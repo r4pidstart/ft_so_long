@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 03:15:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/31 04:58:06 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 19:00:48 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int	verify_map(char *path, t_map *map)
 	int		fd;
 
 	*map = (t_map){.collectible = 0, .exit = 0, .wall = 0};
+	*map = (t_map){.move_cnt = 0, .collectible_cnt = 0};
 	map->player = (t_point){.x = -1, .y = -1};
 	fd = open(path, O_RDONLY);
 	if (fd == -1)

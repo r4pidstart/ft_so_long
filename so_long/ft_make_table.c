@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 04:40:57 by tjo               #+#    #+#             */
-/*   Updated: 2022/08/31 17:56:44 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 18:58:29 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ static void	fill_table(char **table, t_map map)
 	{
 		table[((t_point *)tmp->content)->x][((t_point *)tmp->content)->y] = 'C';
 		tmp = tmp->next;
+		map.collectible_cnt++;
 	}
 	tmp = map.wall;
 	while (tmp)

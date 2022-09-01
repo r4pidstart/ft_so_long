@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 03:29:47 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 04:05:14 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 19:19:58 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,26 @@ static t_assets	get_assets(t_vars *v)
 	return (r);
 }
 
+static void	draw_count(t_vars *v, t_assets *a)
+{
+	int	cnt;
+	int	digits;
+	int	offset;
+
+	printf("move count: #%d\n", v->map.move_cnt);
+	cnt = v->map.move_cnt;
+	digits = 0;
+	offset = v->map.col * 64 - 64;
+	while (cnt)
+	{
+		mlx_put_image_to_window(v->mlx, v->win, a->num[cnt % 10], offset - digits * 18, 16);
+		digits++;
+		cnt /= 10;
+	}
+	if (digits)
+		mlx_put_image_to_window(v->mlx, v->win, a->sharp, offset - digits * 18 - 16, 16);
+}
+
 void	draw_image(t_vars *v)
 {
 	t_assets	a;
@@ -62,4 +82,5 @@ void	draw_image(t_vars *v)
 				mlx_put_image_to_window(v->mlx, v->win, a.player[0], y * 64, x * 64);
 		}
 	}
+	draw_count(v, &a);
 }

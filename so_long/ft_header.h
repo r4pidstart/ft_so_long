@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 22:05:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 03:42:15 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 19:07:42 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct s_map
 	int		row;
 	int		col;
 	int		empty_cnt;
+	int		collectible_cnt;
+	int		move_cnt;
 	t_point	player;
 	t_point	enemy;
 	t_list	*exit;
@@ -82,6 +84,10 @@ size_t	__rand(void);
 
 /* ft_draw.c */
 void	draw_image(t_vars *vars);
+
+/* ft_move.c */
+void	move_player(int keycode, t_vars *vars);
+
 
 
 

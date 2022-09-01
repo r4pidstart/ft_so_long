@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 22:05:21 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 03:53:13 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 18:56:59 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	key_hook(int keycode, t_vars *vars)
 {
 	if (keycode == KEY_W || keycode == KEY_A \
 		|| keycode == KEY_S || keycode == KEY_D)
-		printf("%d\n", keycode);
+		move_player(keycode, vars);
 	else if (keycode == KEY_ESC)
 		close_game(vars);
 	return (0);
