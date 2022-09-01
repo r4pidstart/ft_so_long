@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 22:05:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 23:49:27 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/02 00:03:29 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ typedef struct s_vars
 	t_assets	assets;
 }t_vars;
 
-
 enum	e_keycode
 {
 	KEY_W = 13,
@@ -91,8 +90,5 @@ void		draw_image(t_vars *vars, int moved);
 /* ft_move.c */
 void		move_player(int keycode, t_vars *vars);
 void		move_enemy(t_vars *v);
-
-
-
 
 #endif
