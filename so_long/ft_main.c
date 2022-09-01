@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 22:05:21 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 20:10:53 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 22:49:00 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	main(int argc, char **argv)
 		return (!printf("Wrong argument\n"));
 	else if (verify_map(argv[1], &vars.map))
 		return (1);
-	vars.table = make_table(vars.map);
+	vars.table = make_table(&vars.map);
 	if (!vars.table)
 		return (2);
 	vars.m = mlx_init();

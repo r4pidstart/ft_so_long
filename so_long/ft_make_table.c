@@ -6,75 +6,75 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 04:40:57 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 20:09:17 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 22:53:18 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ft_header.h"
 
-static void	fill_table(char **table, t_map map)
+static void	fill_table(char **table, t_map *map)
 {
 	t_list	*tmp;
 
-	tmp = map.collectible;
+	tmp = map->collectible;
 	while (tmp)
 	{
 		table[((t_point *)tmp->content)->x][((t_point *)tmp->content)->y] = 'C';
 		tmp = tmp->next;
 	}
-	tmp = map.wall;
+	tmp = map->wall;
 	while (tmp)
 	{
 		table[((t_point *)tmp->content)->x][((t_point *)tmp->content)->y] = 'W';
 		tmp = tmp->next;
 	}
-	tmp = map.exit;
+	tmp = map->exit;
 	while (tmp)
 	{
 		table[((t_point *)tmp->content)->x][((t_point *)tmp->content)->y] = 'Q';
 		tmp = tmp->next;
 	}
-	table[map.player.x][map.player.y] = 'P';
+	table[map->player.x][map->player.y] = 'P';
 }
 
-static void	make_enemy(char **table, t_map map)
+static void	make_enemy(char **table, t_map *map)
 {
 	t_point	tmp;
 
-	if (map.empty_cnt < 10)
+	if (map->empty_cnt < 10)
 		return ;
 	while (1)
 	{
-		tmp = (t_point){.x = __rand() % map.row, .y = __rand() % map.col};
+		tmp = (t_point){.x = __rand() % map->row, .y = __rand() % map->col};
 		if (!table[tmp.x][tmp.y])
 		{
-			map.enemy = tmp;
+			map->enemy = tmp;
 			table[tmp.x][tmp.y] = 'E';
 			return ;
 		}
 	}
 }
 
-char	**make_table(t_map map)
+char	**make_table(t_map *map)
 {
 	char	**table;
 	int		i;
 
-	table = (char **)malloc(sizeof(char **) * map.row);
+	table = (char **)malloc(sizeof(char **) * map->row);
 	if (!table)
 		return (0);
-	i = map.row;
+	i = map->row;
 	while (i--)
 	{
-		table[i] = (char *)malloc(sizeof(char *) * map.col);
+		table[i] = (char *)malloc(sizeof(char *) * map->col);
 		if (!table[i])
 		{
-			while (i++ < map.row - 1)
+			while (i++ < map->row - 1)
 				free(table[i]);
 			free(table);
 			return (0);
 		}
-		ft_memset(table[i], 0, map.col);
+		ft_memset(table[i], 0, map->col);
 	}
 	fill_table(table, map);
 	make_enemy(table, map);

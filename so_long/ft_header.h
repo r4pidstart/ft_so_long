@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 22:05:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 19:59:37 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 22:52:56 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ enum	e_keycode
 int			verify_map(char *path, t_map *map);
 
 /* ft_header.c */
-char		**make_table(t_map map);
+char		**make_table(t_map *map);
 
 /* ft_utils.c */
 size_t		__rand(void);
@@ -88,6 +88,7 @@ void		draw_image(t_vars *vars, t_assets assets, int moved);
 
 /* ft_move.c */
 void		move_player(int keycode, t_vars *vars);
+void		move_enemy(t_vars *v);
 
 
 

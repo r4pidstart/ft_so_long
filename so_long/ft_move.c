@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 19:06:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 20:06:32 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 22:56:08 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,28 @@ void	move_player(int c, t_vars *v)
 	draw_image(v, get_assets(v), 1);
 }
 
-// void	move_enemy()
-// {
-	
-// }
+void	move_enemy(t_vars *v)
+{
+	static int	way[4][2] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
+	t_point		next;
+	int			r;
+
+	while (1)
+	{
+		r = __rand() % 4;
+		next = (t_point){v->map.enemy.x + way[r][0], \
+			v->map.enemy.y + way[r][1]};
+		if (v->table[next.x][next.y] == 'W' || v->table[next.x][next.y] == 'Q' \
+			|| v->table[next.x][next.y] == 'C')
+			continue ;
+		if (v->table[next.x][next.y] == 'P')
+		{
+			v->table[v->map.player.x][v->map.player.y] = '\0';
+			v->map.player.x = -1;
+		}
+		v->table[v->map.enemy.x][v->map.enemy.y] = 0;
+		v->map.enemy = next;
+		v->table[v->map.enemy.x][v->map.enemy.y] = 'E';
+		break ;
+	}
+}

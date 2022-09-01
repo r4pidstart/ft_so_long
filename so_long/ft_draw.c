@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/01 03:29:47 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 20:51:06 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 23:05:16 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	draw_count(t_vars *v, t_assets *a, int moved)
 	int	digits;
 	int	offset;
 
-	if (moved)
+	if (moved == 1)
 		printf("move count: #%d\n", v->map.move_cnt);
 	cnt = v->map.move_cnt;
 	digits = 0;
@@ -63,10 +63,9 @@ static void	draw_count(t_vars *v, t_assets *a, int moved)
 
 static void	draw_area(t_point p, t_vars *v, t_assets *a, int p_state)
 {
-	(void)p_state;
 	if (v->table[p.x][p.y] == 'W')
 		mlx_put_image_to_window(v->m, v->w, a->wall, p.y * 64, p.x * 64);
-	else
+	else if (v->table[p.x][p.y] != 'W')
 	{
 		mlx_put_image_to_window(v->m, v->w, a->ground, p.y * 64, p.x * 64);
 		if (v->table[p.x][p.y] == 'C')
@@ -88,6 +87,11 @@ void	draw_image(t_vars *v, t_assets a, int moved)
 	int			y;
 
 	p_state++;
+	if (p_state % 33 == 0)
+	{
+		move_enemy(v);
+		moved = 2;
+	}
 	if (p_state % 50 == 0 && !moved)
 		return ;
 	x = v->map.row;
@@ -95,7 +99,7 @@ void	draw_image(t_vars *v, t_assets a, int moved)
 	{
 		y = v->map.col;
 		while (y--)
-			draw_area((t_point){x, y}, v, &a, p_state);
+			draw_area((t_point){x, y}, v, &a, p_state | (1 << 16));
 	}
 	if (p_state >= 100)
 		p_state = 0;
