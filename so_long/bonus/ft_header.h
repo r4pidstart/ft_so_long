@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 22:05:23 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/01 23:39:00 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/01 23:49:27 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@
 # include<stdio.h>
 # include<errno.h>
 # include<string.h> 
-# include"mlx/mlx.h"
-# include"mylibft/libft.h"
-
-// gress #509B66
+# include"../mlx/mlx.h"
+# include"../mylibft/libft.h"
 
 typedef struct s_point
 {
