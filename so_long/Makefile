@@ -6,7 +6,7 @@
 #    By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/31 12:48:31 by tjo               #+#    #+#              #
-#    Updated: 2022/09/01 23:54:47 by tjo              ###   ########.fr        #
+#    Updated: 2022/09/03 04:18:44 by tjo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(LIBFT)
+$(NAME): $(LIBFT) $(addprefix $(FOLDER), $(SRCS:.c=.o))
 	clang -Wall -Wextra -Werror -g3 -ggdb \
 	-o ./so_long \
 	$(addprefix $(FOLDER), $(SRCS)) \
@@ -34,6 +34,9 @@ $(NAME): $(LIBFT)
 
 $(LIBFT):
 	make -C $(LIBFT_SRCS) all
+
+%.o: %.c
+	gcc $(CFLAGS) -c $^ -o $@
 	
 bonus:
 	$(MAKE) BONUS=1 $(NAME)
