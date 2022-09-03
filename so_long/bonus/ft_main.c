@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 22:05:21 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/02 00:03:32 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/03 19:59:18 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,10 @@ static void	free_elements(t_vars *vars)
 
 	ft_lstclear(&vars->map.collectible, free);
 	ft_lstclear(&vars->map.exit, free);
-	free(vars->assets.chest);
-	free(vars->assets.door);
-	free(vars->assets.ground);
-	free(vars->assets.player[0]);
-	free(vars->assets.player[1]);
-	free(vars->assets.slime);
-	free(vars->assets.wall);
-	n = 10;
+	n = vars->map.row;
 	while (n--)
-		free(vars->assets.num[n]);
-	free(vars->assets.sharp);
+		free(vars->table[n]);
+	free(vars->table);
 }
 
 int	close_game(t_vars *vars)
