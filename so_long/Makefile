@@ -6,7 +6,7 @@
 #    By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/31 12:48:31 by tjo               #+#    #+#              #
-#    Updated: 2022/09/03 04:18:44 by tjo              ###   ########.fr        #
+#    Updated: 2022/09/03 19:46:00 by tjo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ $(NAME): $(LIBFT) $(addprefix $(FOLDER), $(SRCS:.c=.o))
 	clang -Wall -Wextra -Werror -g3 -ggdb \
 	-o ./so_long \
 	$(addprefix $(FOLDER), $(SRCS)) \
-	-Imlx -Lmlx -lmlx -framework Metal -framework Metalkit \
+	-Imlx -Lmlx -lmlx -framework OpenGL -framework Appkit \
 	-Lmylibft -lft
 
 $(LIBFT):
