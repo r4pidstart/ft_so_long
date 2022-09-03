@@ -29,6 +29,10 @@ static void	free_elements(t_vars *vars)
 	while (n--)
 		free(vars->assets.num[n]);
 	free(vars->assets.sharp);
+	n = vars->map.row;
+	while (n--)
+		free(vars->table[n]);
+	free(vars->table);
 }
 
 int	close_game(t_vars *vars)
