@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_HEADER_H
-# define FT_HEADER_H
+#ifndef FT_HEADER_BONUS_H
+# define FT_HEADER_BONUS_H
 
 # include<stdlib.h>
 # include<unistd.h>
