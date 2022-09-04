@@ -6,7 +6,7 @@
 #    By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/31 12:48:31 by tjo               #+#    #+#              #
-#    Updated: 2022/09/03 19:46:00 by tjo              ###   ########.fr        #
+#    Updated: 2022/09/04 20:18:43 by tjo              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,12 +15,15 @@ CFLAGS = -Wall -Wextra -Werror
 
 LIBFT = mylibft/libft.a
 LIBFT_SRCS = mylibft
-SRCS = ft_draw.c ft_main.c ft_make_table.c ft_move.c ft_utils.c ft_verify_map.c
+MANDATORY_SRCS = ft_draw.c ft_main.c ft_make_table.c ft_move.c ft_utils.c ft_verify_map.c
+BONUS_SRCS = ft_draw_bonus.c ft_main_bonus.c ft_make_table_bonus.c ft_move_bonus.c ft_utils_bonus.c ft_verify_map_bonus.c
 
 ifdef BONUS
-	FOLDER = bonus/
+	FOLDER = bonus_src/
+	SRCS = $(BONUS_SRCS)
 else
-	FOLDER = mandatory/
+	FOLDER = mandatory_src/
+	SRCS = $(MANDATORY_SRCS)
 endif
 
 all: $(NAME)
@@ -49,6 +52,7 @@ fclean: clean
 	rm -rf $(NAME)
 	make fclean -C $(LIBFT_SRCS)
 
-re: fclean all
+re: fclean 
+	$(MAKE) all
 
-.PHONY: bonus all clean fclean re
+.PHONY: all clean fclean re

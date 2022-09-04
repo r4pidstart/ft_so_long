@@ -1,2 +1,4 @@
 test*
 so_long/mylibft/*/*.o
+
+*.dSYM
