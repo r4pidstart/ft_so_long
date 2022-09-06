@@ -6,7 +6,7 @@
 /*   By: tjo <tjo@student.42seoul.kr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/29 22:05:21 by tjo               #+#    #+#             */
-/*   Updated: 2022/09/03 19:59:26 by tjo              ###   ########.fr       */
+/*   Updated: 2022/09/06 22:51:25 by tjo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ int	close_game(t_vars *vars)
 
 static int	key_hook(int keycode, t_vars *vars)
 {
+	if (keycode == KEY_ESC)
+		close_game(vars);
 	if (vars->map.player.x == -1)
 		return (0);
 	if (keycode == KEY_W || keycode == KEY_A \
 		|| keycode == KEY_S || keycode == KEY_D)
 		move_player(keycode, vars);
-	else if (keycode == KEY_ESC)
-		close_game(vars);
 	return (0);
 }
 
