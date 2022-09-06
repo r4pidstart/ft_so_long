@@ -603,6 +603,12 @@ static void	free_elements(t_vars *vars)
 - - -
 </details>
 
+- - -
+
 mlx 라이브러리 사용법은 다음 링크를 참고했습니다.
+
 https://harm-smits.github.io/42docs/libs/minilibx.html
 
+<img width="407" alt="image" src="https://user-images.githubusercontent.com/67845112/188685202-dfadc8f8-94ea-4afa-8c24-41e44a3d4a50.png">
+
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fr4pidstart%2Fft_so_long%2F&count_bg=%23000000&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
