@@ -608,6 +608,8 @@ static void	free_elements(t_vars *vars)
 mlx 라이브러리 사용법은 다음 링크를 참고했습니다.
 
 https://harm-smits.github.io/42docs/libs/minilibx.html
+	
+<img width="944" alt="image" src="https://user-images.githubusercontent.com/67845112/194150962-79b5bb79-951b-47ad-8f22-745612610386.png">
 
 <img width="407" alt="image" src="https://user-images.githubusercontent.com/67845112/188685202-dfadc8f8-94ea-4afa-8c24-41e44a3d4a50.png">
 
